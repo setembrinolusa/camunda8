@@ -1,6 +1,8 @@
 ## Running animal-picture-app app with Spring Boot
 
-![Clean Architecture](clean.png)
+![Java Clean Architecture](clean.png)
+
+![Solution Architecture](arquitecture.png)
 
 ## Steps to Run the Spring Boot ( Must have Docker installed )
 
@@ -19,42 +21,36 @@
     docker-compose up
     ```
 
-    The server will start on port 8080.
+    The server will start on port 8082.
 
 ## Steps to Access the app documentation
 
-Go to the <http://localhost:8080/swagger-ui/>
+Go to the <http://localhost:8082/swagger-ui/>
 
 ![swagger](swagger.png)
 
 ## Auto inserted rows on startup
 ```python
-MYSQL_DATABASE: regs_db
-MYSQL_USER: registration_u
-MYSQL_PASSWORD: registration_p
+MYSQL_DATABASE: pictures_db
+MYSQL_USER: pictures_u
+MYSQL_PASSWORD: pictures_p
 MYSQL_ROOT_PASSWORD: root0808
 ```
 
 | Tables       | Rows |
 |--------------|:----:|
-| course       |  5   |
-| student      |  10  |
-| registration |  3   |
+| picture      |  0   |
 
-## Courses WITH Students ( or Students WITH Coureses )
+## Pictures
 
 ```python
-    mysql> mysql -u registration_u -p
-    mysql> Enter password: `registration_p`
-    mysql> use regs_db;
-    mysql> select * from registration;
+    mysql> mysql -u pictures_u -p
+    mysql> Enter password: `pictures_p`
+    mysql> use pictures_db;
+    mysql> SELECT * FROM pictures_db.picture;
 ```
 
-| id  | course_id | student_id |
-|-----|:---------:|:----------:|
-| 1   |     2     |     3      |
-| 2   |     3     |     4      |
+| id  | animal_type | data       | name       | path       | type       |
+|-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
+|     |             |            |            |            |            |
 
-> Other Courses and Students not Registered should appear in WITHOUT list from swagger
-> 
-![swagger](without.png)

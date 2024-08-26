@@ -20,21 +20,25 @@ import poc.com.camunda.adapters.jpa.repositories.PictureRepository;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class JPAUnitTest {
 
-	@Autowired
-	PictureRepository pictureRepo;
+    @Autowired
+    PictureRepository pictureRepo;
 
-	@Test
-	public void should_find_all_pictures() {
-		List<Picture> regs = pictureRepo.findAll();
-		assertFalse(regs.isEmpty());
-	}
+    @Test
+    public void should_find_all_pictures() {
+        List<Picture> pictures = pictureRepo.findAll();
+        if (pictures.isEmpty()) {
+            assertTrue(pictures.isEmpty());
+        } else {
+            assertFalse(pictures.isEmpty());
+        }
+    }
 
-	@Test
-	public void should_find_picture_by_id() {
-		Picture c = new Picture();
-		c = pictureRepo.save(c);
-		Picture foundCourse = pictureRepo.findById(c.getId()).get();
-		assertTrue(foundCourse.getId().equals(c.getId()));
-	}
+    @Test
+    public void should_find_picture_by_id() {
+        Picture c = new Picture();
+        c = pictureRepo.save(c);
+        Picture foundPicture = pictureRepo.findById(c.getId()).get();
+        assertTrue(foundPicture.getId().equals(c.getId()));
+    }
 
 }

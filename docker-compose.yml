@@ -13,6 +13,11 @@ services:
     restart: always
 
     environment: # Pass environment variables to the service
+      ZEEBE_CLIENT_CLOUD_REGIION:
+      ZEEBE_CLIENT_CLOUD_CLUSTER_ID: 6e5a734f-c43c-4fee-b979-e0188c381029.dsm-1.zeebe.camunda.io:443
+      ZEEBE_CLINET_CLOUD_CLIENT_ID: ~wUnnA2B~OgxA1m6r3TmmT9BFk_oMS0I
+      ZEEBE_CLIENT_CLOUD_CLIENT_SECRET: OfR7jg~fQtOPUXBZiOGP1GEiv-kD7.ecM_TDzZdyCJUxRBDFnHP1AMKnyh6OD~Wc
+    
       ZEEBE_ADDRESS: 6e5a734f-c43c-4fee-b979-e0188c381029.dsm-1.zeebe.camunda.io:443
       ZEEBE_CLIENT_ID: ~wUnnA2B~OgxA1m6r3TmmT9BFk_oMS0I
       ZEEBE_CLIENT_SECRET: OfR7jg~fQtOPUXBZiOGP1GEiv-kD7.ecM_TDzZdyCJUxRBDFnHP1AMKnyh6OD~Wc
@@ -80,4 +85,4 @@ volumes:
   db-data:
 # Networks to be created to facilitate communication between containers
 networks:
-  backend:
+  pictures:

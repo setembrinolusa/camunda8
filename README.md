@@ -20,7 +20,7 @@
 
 2. **Setting up the Cluster vars**
 
-    Change the values as per your Camunda 8 Cluster
+    Change the values as per your Camunda 8 Cluster inside the docker-compose-yml file
 ```python
     ZEEBE_ADDRESS: 
     ZEEBE_CLIENT_ID: 
@@ -28,7 +28,7 @@
     ZEEBE_AUTHORIZATION_SERVER_URL: 
     ZEEBE_TOKEN_AUDIENCE: 
 ```
-3. **Run the solution**
+3. **Running the solution**
 
     You can run the solution by typing the following command
 

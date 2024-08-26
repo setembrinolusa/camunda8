@@ -36,7 +36,7 @@
     docker-compose up
     ```
 
-    The server will start on ports 8080, 8081 and 8082.
+    The servers will start on ports 8080, 8081 and 8082.
 
     Frontend to start the application 
     Go to the <http://localhost:8080/>

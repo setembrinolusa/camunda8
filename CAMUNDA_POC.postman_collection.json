@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "eee61b2a-05c0-4f6e-a317-0d11d0f33e68",
+		"name": "CAMUNDA_POC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8078639"
+	},
+	"item": [
+		{
+			"name": "getPictures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"pictures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPictureById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/pictures/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"pictures",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

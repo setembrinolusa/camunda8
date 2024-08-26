@@ -1,6 +1,7 @@
 package poc.com.camunda.core.usecases.impl;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import poc.com.camunda.adapters.jpa.models.Picture;
 import poc.com.camunda.adapters.jpa.repositories.PictureRepository;
 import poc.com.camunda.core.domain.entities.PictureEntity;
+import poc.com.camunda.core.exceptions.ResourceNotFoundException;
 import poc.com.camunda.core.usecases.PictureUseCase;
 import poc.com.camunda.core.usecases.mappers.PictureUcMapper;
 
@@ -28,7 +30,9 @@ public class PictureUseCaseImpl implements PictureUseCase {
     private static final Logger logger = LoggerFactory.getLogger(PictureUseCaseImpl.class);
 
     public Picture getFile(String id) {
-        return repo.findById(id).get();
+        Optional<Picture> picture = Optional
+                .of(repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Picture", "id", id)));
+        return picture.get();
     }
 
     public Stream<Picture> getAllFiles() {

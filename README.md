@@ -15,7 +15,7 @@
 
 2. **Setting up the Cluster vars**
 
-## Change the values as per your Camunda 8 Cluster
+    Change the values as per your Camunda 8 Cluster
 ```python
 ZEEBE_ADDRESS: 
 ZEEBE_CLIENT_ID: 
@@ -31,9 +31,18 @@ ZEEBE_TOKEN_AUDIENCE:
     docker-compose up
     ```
 
-    The server will start on port 8082.
+    The server will start on ports 8080, 8081 and 8082.
 
-## Steps to Access the app documentation
+Frontend to start the application 
+Go to the <http://localhost:8080/>
+
+Worker to execute tasks from-to Camunda 8
+Go to the <http://localhost:8081/>
+
+Application to persist and search pictures from-to MySQL database
+Go to the <http://localhost:8081/>
+
+4. **Steps to Access the app documentation**
 
 Go to the <http://localhost:8082/swagger-ui/>
 

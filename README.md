@@ -1,4 +1,4 @@
-## Running animal-picture-app app with Spring Boot
+## Running Animal Picture Solution with CAMUNDA 8
 
 ![Java Clean Architecture](clean.png)
 
@@ -10,12 +10,22 @@
 
     ```bash
     git clone https://github.com/setembrinolusa/camunda8.git
-    cd metadata
+    cd camunda8
     ```
 
-2. **Run the app**
+2. **Setting up the Cluster vars**
 
-    You can run the app by typing the following command
+## Change the values as per your Camunda 8 Cluster
+```python
+ZEEBE_ADDRESS: 
+ZEEBE_CLIENT_ID: 
+ZEEBE_CLIENT_SECRET: 
+ZEEBE_AUTHORIZATION_SERVER_URL: 
+ZEEBE_TOKEN_AUDIENCE: 
+```
+3. **Run the solution**
+
+    You can run the solution by typing the following command
 
     ```bash
     docker-compose up

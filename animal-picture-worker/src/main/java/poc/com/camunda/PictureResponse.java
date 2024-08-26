@@ -1,6 +1,7 @@
-package poc.com.camunda.core.domain.entities;
+package poc.com.camunda;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,12 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentEntity implements Serializable {
+public class PictureResponse implements Serializable {
 
-	private static final long serialVersionUID = 7899988800446207352L;
-
-	private Long id;
-
-    private String name;
+    private static final long serialVersionUID = 4331181472716298764L;
+    private List<Picture> pictures;
 
 }

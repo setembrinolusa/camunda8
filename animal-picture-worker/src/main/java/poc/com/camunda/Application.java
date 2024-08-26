@@ -1,14 +1,15 @@
 package poc.com.camunda;
 
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.worker.JobWorker;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
@@ -27,24 +28,23 @@ public class Application {
                     .credentialsProvider(credentialsProvider)
                     .build()) {
             
-            final Map<String, Object> variables = new HashMap<String, Object>();
-            variables.put("reference", "C8_12345");
-            variables.put("amount", Double.valueOf(100.00));
-            variables.put("cardNumber", "1234567812345678");
-            variables.put("cardExpiry", "12/2023");
-            variables.put("cardCVC", "999");
-            
-            client.newCreateInstanceCommand()
-            .bpmnProcessId("paymentProcess")
-            .latestVersion()
-            .variables(variables)
-            .send()
-            .join();
+//            final Map<String, Object> variables = new HashMap<String, Object>();
+//            variables.put("reference", "C8_12345");
+//            variables.put("animalType", "CAT");
+//            variables.put("name", "cat.jpg");
+//            variables.put("path", "pictures/");
+//            
+//            client.newCreateInstanceCommand()
+//            .bpmnProcessId("pictures-process")
+//            .latestVersion()
+//            .variables(variables)
+//            .send()
+//            .join();
             
             final JobWorker creditCardWorker =
                     client.newWorker()
-                        .jobType("chargeCreditCard")
-                        .handler(new CreditCardServiceHandler())
+                        .jobType("savePicture")
+                        .handler(new PictureServiceHandler())
                         .timeout(Duration.ofSeconds(10).toMillis())
                         .open();
                 Thread.sleep(10000);

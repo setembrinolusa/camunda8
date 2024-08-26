@@ -20,7 +20,7 @@
   add your form schema to this script tag
   alternatively, load it asynchronously from anywhere
 -->
-<script type="application/form-schema" src="./sample-form.form"></script>
+<script type="application/form-schema" src="./pictures-form.form"></script>
 
 <!--
   required viewer script
@@ -28,7 +28,7 @@
 <script src="https://unpkg.com/@bpmn-io/form-js@0.7.2/dist/form-viewer.umd.js"></script>
 
 <script>
-      $.getJSON('/sample-form.form', function(data) {
+      $.getJSON('/pictures-form.form', function(data) {
         const schema = data; // already a JSON - no need for: JSON.parse(data);
         const container = document.querySelector('#form');
 

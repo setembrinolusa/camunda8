@@ -1,6 +1,4 @@
-package poc.com.camunda.adapters.http.rest.v1.models;
-
-import java.io.Serializable;
+package poc.com.camunda;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,14 +13,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentResponse implements Serializable {
+public class Picture {
 
-	private static final long serialVersionUID = -7614990327890009781L;
-	
-	@JsonProperty("id")
-	private Long id;
-	
-	@JsonProperty("name")
+    private String id;
+
+    private String animalType;
+    
     private String name;
+
+    private String type;
+
+    private String path;
+
+    private byte[] data;
+    
+    private String url;
+
+    private long size;
 
 }

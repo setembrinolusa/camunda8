@@ -15,14 +15,23 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CourseResponse implements Serializable {
+public class PictureRequest implements Serializable {
 
-	private static final long serialVersionUID = 4331181472716298764L;
-
-	@JsonProperty("ïd")
-	private Long id;
+	private static final long serialVersionUID = 7887597814531038619L;
+	
+	@JsonProperty("animalType")
+    private String animalType;
 	
 	@JsonProperty("name")
-    private String name;
+	private String name;
+	
+	@JsonProperty("type")
+	private String type;
+	
+	@JsonProperty("path")
+    private String path;
+	
+	@JsonProperty("data")
+	private byte[] data;
 
 }

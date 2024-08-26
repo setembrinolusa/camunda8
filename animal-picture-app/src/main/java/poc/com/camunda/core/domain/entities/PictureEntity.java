@@ -13,12 +13,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CourseEntity implements Serializable {
+public class PictureEntity implements Serializable {
 
-	private static final long serialVersionUID = 5584345989376682627L;
+    private static final long serialVersionUID = 5584345989376682627L;
 
-	private Long id;
+    private Long id;
+
+    private String animalType;
 
     private String name;
+
+    private String type;
+
+    private String path;
+
+    private byte[] image;
 
 }

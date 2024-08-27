@@ -60,12 +60,12 @@
 ![swagger](swagger.png)
 
 ## Database MySQL 5.7
-	```python
+```python
     MYSQL_DATABASE: pictures_db
     MYSQL_USER: pictures_u
     MYSQL_PASSWORD: pictures_p
     MYSQL_ROOT_PASSWORD: root0808
-	```
+```
 
 | Tables       | Rows |
 |--------------|:----:|
@@ -73,12 +73,12 @@
 
 ## Pictures table
 
-	```python
+```python
     mysql> mysql -u pictures_u -p
     mysql> Enter password: `pictures_p`
     mysql> use pictures_db;
     mysql> SELECT * FROM pictures_db.picture;
-	```
+```
 
 | id  | animal_type | data       | name       | path       | type       |
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|

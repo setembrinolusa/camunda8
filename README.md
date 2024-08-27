@@ -58,7 +58,7 @@
 
 ![swagger](swagger.png)
 
-## Auto inserted rows on startup
+## Database MySQL 5.7
 ```python
     MYSQL_DATABASE: pictures_db
     MYSQL_USER: pictures_u
@@ -70,7 +70,7 @@
 |--------------|:----:|
 | picture      |  0   |
 
-## Pictures
+## Pictures table
 
 ```python
     mysql> mysql -u pictures_u -p

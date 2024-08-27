@@ -38,9 +38,9 @@
 
     You can run the solution by typing the following command
 
-```python
+	```python
     docker-compose up
-```
+	```
 
     The servers will start on ports 8080, 8081 and 8082.
 

@@ -42,17 +42,16 @@
     docker-compose up
 	```
 
-> **Note**:
->     The servers will start on ports 8080, 8081 and 8082.
-> 
->     Frontend to start the application 
->     Go to the <http://localhost:8080/>
-> 
->     Worker to execute tasks from-to Camunda 8
->     Go to the <http://localhost:8081/>
-> 
->     Application to persist and search pictures from-to MySQL database
- >    Go to the <http://localhost:8081/>
+    The servers will start on ports 8080, 8081 and 8082.
+
+    Frontend to start the application 
+    Go to the <http://localhost:8080/>
+
+    Worker to execute tasks from-to Camunda 8
+    Go to the <http://localhost:8081/>
+
+    Application to persist and search pictures from-to MySQL database
+    Go to the <http://localhost:8081/>
 
 4. **Steps to Access the app documentation**
 

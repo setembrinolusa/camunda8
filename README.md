@@ -20,13 +20,15 @@
 
 2. **Setting up the Cluster vars**
 
-    Change the values as per your Camunda 8 Cluster inside the docker-compose-yml file
+    Change the values as per your Camunda 8 Cluster inside the application.properties files
+    .../camunda8/tree/develop/animal-picture-front/src/main/resources
+    .../camunda8/tree/develop/animal-picture-worker/src/main/resources
+    
 ```python
-    ZEEBE_ADDRESS: 
-    ZEEBE_CLIENT_ID: 
-    ZEEBE_CLIENT_SECRET: 
-    ZEEBE_AUTHORIZATION_SERVER_URL: 
-    ZEEBE_TOKEN_AUDIENCE: 
+	zeebe.client.cloud.region=
+	zeebe.client.cloud.clusterId=
+	zeebe.client.cloud.clientId=
+	zeebe.client.cloud.clientSecret=
 ```
 3. **Running the solution**
 

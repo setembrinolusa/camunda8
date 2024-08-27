@@ -1,36 +1,55 @@
 package poc.com.camunda;
 
-import io.camunda.zeebe.client.ZeebeClient;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import io.camunda.zeebe.client.ZeebeClient;
+import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
+import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 
 @RestController
 @RequestMapping("/")
 public class StartFormRestController {
 
-  private static final Logger LOG = LoggerFactory.getLogger(StartFormRestController.class);
+    @Value("${zeebe.client.address}")
+    private String zeebeClientAddress;
 
-  @Autowired
-  private ZeebeClient zeebe;
+    @Value("${zeebe.client.id}")
+    private String zeebeClientId;
 
-  @PostMapping("/start")
-  public void startProcessInstance(@RequestBody Map<String, Object> variables) {
+    @Value("${zeebe.client.secret}")
+    private String zeebeClientSecret;
 
-    LOG.info(
-        "Starting process `" + ProcessConstants.BPMN_PROCESS_ID + "` with variables: " + variables);
+    @Value("${zeebe.authorization.server.url}")
+    private String zeebeAuthorizationServerUrl;
 
-    zeebe
-        .newCreateInstanceCommand()
-        .bpmnProcessId(ProcessConstants.BPMN_PROCESS_ID)
-        .latestVersion()
-        .variables(variables)
-        .send();
-  }
+    @Value("${zeebe.client.token.audiente}")
+    private String zeebeClientTokenAudiente;
+
+    private static final Logger LOG = LoggerFactory.getLogger(StartFormRestController.class);
+
+    @PostMapping("/start")
+    public void startProcessInstance(@RequestBody Map<String, Object> variables) {
+
+        LOG.info("Starting process `" + ProcessConstants.BPMN_PROCESS_ID + "` with variables: " + variables);
+
+        final OAuthCredentialsProvider credentialsProvider = new OAuthCredentialsProviderBuilder()
+                .authorizationServerUrl(zeebeAuthorizationServerUrl).audience(zeebeClientTokenAudiente)
+                .clientId(zeebeClientId).clientSecret(zeebeClientSecret).build();
+
+        try (final ZeebeClient client = ZeebeClient.newClientBuilder().gatewayAddress(zeebeClientAddress)
+                .credentialsProvider(credentialsProvider).build()) {
+            client.newCreateInstanceCommand().bpmnProcessId(ProcessConstants.BPMN_PROCESS_ID).latestVersion()
+                    .variables(variables).send();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -27,6 +27,47 @@
 			"response": []
 		},
 		{
+			"name": "uploadPicture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "animalType",
+							"value": "cat",
+							"type": "text"
+						},
+						{
+							"key": "path",
+							"value": "https://place.dog/300/200",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"value": "200.jpeg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/pictures/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"pictures",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "getPictureById",
 			"request": {
 				"method": "GET",

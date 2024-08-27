@@ -44,12 +44,12 @@
 
     The servers will start on ports 8080, 8081 and 8082.
 
-    Frontend to start the application
+    Frontend (STARTER) to start the BPM Process
     
     Go to the <http://localhost:8080/>
 
 
-    Worker to execute tasks from-to Camunda 8
+    Worker from-to Camunda 8
 
     Go to the <http://localhost:8081/>
 

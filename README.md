@@ -21,9 +21,10 @@
 2. **Setting up the Cluster vars**
 
     Change the values as per your Camunda 8 Cluster inside the application.properties files
+        ```bash
     .../camunda8/tree/develop/animal-picture-front/src/main/resources
     .../camunda8/tree/develop/animal-picture-worker/src/main/resources
-    
+        ```
 ```python
 	zeebe.client.cloud.region=
 	zeebe.client.cloud.clusterId=

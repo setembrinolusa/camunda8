@@ -13,10 +13,10 @@
 
 1. **Clone the solution**
 
-    ```bash
+```python
     git clone https://github.com/setembrinolusa/camunda8.git
     cd camunda8
-    ```
+```
 
 2. **Setting up the Cluster vars**
 
@@ -27,19 +27,20 @@
     .../camunda8/tree/develop/animal-picture-worker/src/main/resources
 ```
 
-```python
+```bash
 	zeebe.client.cloud.region=
 	zeebe.client.cloud.clusterId=
 	zeebe.client.cloud.clientId=
 	zeebe.client.cloud.clientSecret=
 ```
+
 3. **Running the solution**
 
     You can run the solution by typing the following command
 
-    ```bash
+```python
     docker-compose up
-    ```
+```
 
     The servers will start on ports 8080, 8081 and 8082.
 

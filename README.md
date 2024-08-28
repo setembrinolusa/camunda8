@@ -147,15 +147,15 @@
 7. **Install the Solution**
 
 ```bash
-    cd ./camunda8/animal-picture-app
+    cd animal-picture-app
     
     helm install --name animal-picture-app ./animal-picture-app
 
-    cd ./camunda8/animal-picture-front
+    cd animal-picture-front
     
     helm install --name animal-picture-front ./animal-picture-front
 
-    cd ./camunda8/animal-picture-worker
+    cd animal-picture-worker
     
     helm install --name animal-picture-worker ./animal-picture-worker
 ```

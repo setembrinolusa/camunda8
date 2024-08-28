@@ -13,7 +13,7 @@
 
 1. **Clone the solution**
 
-	```python
+	```bash
     git clone https://github.com/setembrinolusa/camunda8.git
     cd camunda8
 	```
@@ -38,7 +38,7 @@
 
     You can run the solution by typing the following command
 
-	```python
+	```bash
     docker compose up -d
 	```
 
@@ -66,12 +66,13 @@
 ![swagger](swagger.png)
 
 ## Database MySQL 5.7
-```python
+
+	```bash
     MYSQL_DATABASE: pictures_db
     MYSQL_USER: pictures_u
     MYSQL_PASSWORD: pictures_p
     MYSQL_ROOT_PASSWORD: root0808
-```
+	```
 
 | Tables       | Rows |
 |--------------|:----:|
@@ -79,12 +80,12 @@
 
 ## Pictures table
 
-```python
+	```bash
     mysql> mysql -u pictures_u -p
     mysql> Enter password: `pictures_p`
     mysql> use pictures_db;
     mysql> SELECT * FROM pictures_db.picture;
-```
+	```
 
 | id  | animal_type | data       | name       | path       | type       |
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
@@ -103,11 +104,11 @@
  	
  	For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
  
-	```python
+	```bash
 	127.0.0.1 camunda.poc
 	127.0.0.1 zeebe.camunda.poc
 	```
-	```python
+	```bash
 	kind create cluster --name camunda-platform-poc --config kind.config
 	
 	kubectl apply -f \
@@ -120,7 +121,7 @@
 	Make sure all pods are running with the 
 	kubectl get pods --namespace ingress-nginx command before continuing.
 
-	```python
+	```bash
 	kubectl config use-context kind-camunda-platform-poc
 	
 	helm repo add camunda https://helm.camunda.io
@@ -133,7 +134,7 @@
 
 6.**Install MySQL**
 	
-	```python
+	```bash
 	helm install --name mysql \ 
 	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
@@ -141,7 +142,7 @@
 
 7.**Install the Solution**
 
-	```python
+	```bash
     cd ./camunda8/animal-picture-app
     
     helm install --name animal-picture-app ./animal-picture-app

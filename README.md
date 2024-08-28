@@ -91,7 +91,6 @@
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
 |     |             |            |            |            |            |
 
-## 
 
 5. **Running a Local Cluster
 
@@ -132,7 +131,7 @@
 	-f values-combined-ingress.yaml
 	```
 
-6.**Install MySQL**
+6. **Install MySQL**
 	
 	```bash
 	helm install --name mysql \ 
@@ -140,7 +139,7 @@
 	stable/mysql
 	```
 
-7.**Install the Solution**
+7. **Install the Solution**
 
 	```bash
     cd ./camunda8/animal-picture-app

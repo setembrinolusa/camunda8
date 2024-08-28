@@ -140,7 +140,7 @@
 	
 ```bash
 	helm install --name mysql \ 
-	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
+	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
 ```
 

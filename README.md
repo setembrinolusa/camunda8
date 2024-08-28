@@ -80,19 +80,19 @@
 
 ## Pictures table
 
-	```bash
+```bash
     mysql> mysql -u pictures_u -p
     mysql> Enter password: `pictures_p`
     mysql> use pictures_db;
     mysql> SELECT * FROM pictures_db.picture;
-	```
+```
 
 | id  | animal_type | data       | name       | path       | type       |
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
 |     |             |            |            |            |            |
 
 
-5. **Running a Local Cluster
+5. **Running a Local Cluster**
 
 	https://docs.camunda.io/docs/self-managed/setup/deploy/local/local-kubernetes-cluster/
 
@@ -103,24 +103,29 @@
  	
  	For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
  
-	```bash
+```bash
 	127.0.0.1 camunda.poc
 	127.0.0.1 zeebe.camunda.poc
-	```
-	```bash
+```
+
+	Create the Cluster
+
+```bash
 	kind create cluster --name camunda-platform-poc --config kind.config
 	
 	kubectl apply -f \
 	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-	```
+```
 	
 	ingress-ngnix controller resources (pods, services, etc.) 
 	will be deployed into the ingress-nginx namespace. 
+	
 	It may take a few minutes to download container images and configure deployments. 
-	Make sure all pods are running with the 
-	kubectl get pods --namespace ingress-nginx command before continuing.
+	Make sure all pods are running with the command before continuing
+	
+```bash
+	kubectl get pods --namespace ingress-nginx
 
-	```bash
 	kubectl config use-context kind-camunda-platform-poc
 	
 	helm repo add camunda https://helm.camunda.io
@@ -129,19 +134,19 @@
 
 	helm install --name camunda-platform camunda/camunda-platform \ 
 	-f values-combined-ingress.yaml
-	```
+```
 
 6. **Install MySQL**
 	
-	```bash
+```bash
 	helm install --name mysql \ 
 	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
-	```
+```
 
 7. **Install the Solution**
 
-	```bash
+```bash
     cd ./camunda8/animal-picture-app
     
     helm install --name animal-picture-app ./animal-picture-app
@@ -153,7 +158,7 @@
     cd ./camunda8/animal-picture-worker
     
     helm install --name animal-picture-worker ./animal-picture-worker
-	```
+```
 
 8. **Accessing the Solution**
 

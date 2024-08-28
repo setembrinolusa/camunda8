@@ -148,10 +148,12 @@
 	Zeebe Gateway: grpc://zeebe.camunda.poc
 
 
-7. **Install the Solution**
+6. **Install the Solution**
 
 ```bash
 
+	`Install Mysql`
+	
 	helm install --name mysql \ 
 	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
@@ -169,6 +171,6 @@
     helm install --name animal-picture-worker ./animal-picture-worker
 ```
 
-8. **The Solution**
+7. **The Solution**
 
 	Go to http://camunda.poc/animal-picture-front

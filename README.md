@@ -106,24 +106,30 @@ Add local host mapping so you can resolve the domain name that will be used to a
 	```
 	```python
 	kind create cluster --name camunda-platform-poc --config kind.config
-	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+	kubectl apply -f \
+	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 	```
 	
-	ingress-ngnix controller resources (pods, services, etc.) will be deployed into the ingress-nginx namespace. 
+	ingress-ngnix controller resources (pods, services, etc.) 
+	will be deployed into the ingress-nginx namespace. 
 	It may take a few minutes to download container images and configure deployments. 
-	Make sure all pods are running with the kubectl get pods --namespace ingress-nginx command before continuing.
+	Make sure all pods are running with the 
+	kubectl get pods --namespace ingress-nginx command before continuing.
 
 	```python
 	kubectl config use-context kind-camunda-platform-poc
 	helm repo add camunda https://helm.camunda.io
 	helm repo update
 
-	helm install --name camunda-platform camunda/camunda-platform -f values-combined-ingress.yaml
+	helm install --name camunda-platform camunda/camunda-platform \ 
+	-f values-combined-ingress.yaml
 	```
 
 6. **Install MySQL**
 	```python
-	helm install --name mysql --set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db stable/mysql
+	helm install --name mysql \ 
+	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
+	stable/mysql
 	```
 
 6. **Install the Solution**

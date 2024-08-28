@@ -154,9 +154,9 @@
 
 	`Install Mysql`
 	
-	helm install --name mysql \ 
-	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
-	stable/mysql
+helm install --name mysql \ 
+--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
+stable/mysql
 
 	`Install animal-picture-app`
 	

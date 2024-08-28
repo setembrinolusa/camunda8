@@ -145,4 +145,6 @@ Add local host mapping so you can resolve the domain name that will be used to a
     helm install --name animal-picture-worker ./animal-picture-worker
 	```
 
-6. **Install the Solution**
+7. **Accessing the Solution**
+
+	Go to http://camunda.poc/animal-picture-front

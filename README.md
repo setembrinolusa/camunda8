@@ -118,8 +118,7 @@
 	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
 	
-	ingress-ngnix controller resources (pods, services, etc.) 
-	will be deployed into the ingress-nginx namespace. 
+	The ingress-ngnix controller resources (pods, services, etc.) will be deployed into the ingress-nginx namespace. 
 	
 	It may take a few minutes to download container images and configure deployments. 
 	Make sure all pods are running with the command before continuing

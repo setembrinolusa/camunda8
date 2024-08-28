@@ -1,17 +1,60 @@
+# Chart values for the Camunda 8 Helm chart in combined Ingress setup.
+
+# This file deliberately contains only the values that differ from the defaults.
+# For changes and documentation, use your favorite diff tool to compare it with:
+# https://artifacthub.io/packages/helm/camunda/camunda-platform
+
+# IMPORTANT: Make sure to change "camunda.poc" to your domain.
+
 global:
   ingress:
     enabled: true
     className: nginx
     host: "camunda.poc"
+  identity:
+    auth:
+      publicIssuerUrl: "https://camunda.poc/auth/realms/camunda-platform"
+      operate:
+        redirectUrl: "https://camunda.poc/operate"
+      tasklist:
+        redirectUrl: "https://camunda.poc/tasklist"
+#      optimize:
+#        redirectUrl: "https://camunda.poc/optimize"
+#      webModeler:
+#        redirectUrl: "https://camunda.poc/modeler"
+#      console:
+#        redirectUrl: "https://camunda.poc/console"
+#      connectors:
+#        redirectUrl: "https://camunda.poc/connectors"
+
+identity:
+  contextPath: "/identity"
+  fullURL: "https://camunda.poc/identity"
 
 operate:
   contextPath: "/operate"
 
+#optimize:
+#  contextPath: "/optimize"
+
 tasklist:
   contextPath: "/tasklist"
 
+#webModeler:
+  # The context path is used for the web application that will be accessed by users in the browser.
+  # In addition, a WebSocket endpoint will be exposed on "[contextPath]-ws", e.g. "/modeler-ws".
+#  contextPath: "/modeler"
+
+#console:
+#  contextPath: "/console"
+
+#connectors:
+#  contextPath: "/connectors"
+
 zeebeGateway:
+  contextPath: "/zeebe"
   ingress:
-    enabled: true
-    className: nginx
-    host: "zeebe.camunda.poc"
+    grpc:
+      enabled: true
+      className: nginx
+      host: "zeebe.camunda.poc"

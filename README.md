@@ -112,7 +112,7 @@
 ## Create the Cluster
 
 ```bash
-	kind create cluster --name camunda-platform-poc --config kind.config
+	kind create cluster --name kind-camunda-platform-poc --config kind.config
 	
 	kubectl config use-context kind-camunda-platform-poc
 	
@@ -138,18 +138,23 @@
 	helm install --name camunda-platform camunda/camunda-platform \ 
 	-f values-combined-ingress.yaml
 ```
+Once deployed, you can access the Camunda 8 components on:
 
-6. **Install MySQL**
-	
-```bash
-	helm install --name mysql \ 
-	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
-	stable/mysql
-```
+Applications: https://camunda.poc/[identity|operate|tasklist|zeebe]
+
+Keycloak authentication: https://camunda.poc/auth
+
+Zeebe Gateway: grpc://zeebe.camunda.poc
+
 
 7. **Install the Solution**
 
 ```bash
+
+	helm install --name mysql \ 
+	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
+	stable/mysql
+
     cd animal-picture-app
     
     helm install --name animal-picture-app ./animal-picture-app

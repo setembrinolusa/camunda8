@@ -67,12 +67,12 @@
 
 ## Database MySQL 5.7
 
-	```bash
+```bash
     MYSQL_DATABASE: pictures_db
     MYSQL_USER: pictures_u
     MYSQL_PASSWORD: pictures_p
     MYSQL_ROOT_PASSWORD: root0808
-	```
+```
 
 | Tables       | Rows |
 |--------------|:----:|

@@ -27,11 +27,12 @@
     .../camunda8/tree/develop/animal-picture-worker/src/main/resources
 	```
 
-	```bash
-	zeebe.client.cloud.region=
-	zeebe.client.cloud.clusterId=
-	zeebe.client.cloud.clientId=
-	zeebe.client.cloud.clientSecret=
+	```python
+	zeebe.client.address= zeebe.camunda.poc
+	zeebe.client.id=
+	zeebe.client.secret=
+	zeebe.client.authorization.server.url=
+	zeebe.client.token.audiente=
 	```
 
 3. **Running the solution**
@@ -67,12 +68,12 @@
 
 ## Database MySQL 5.7
 
-```bash
+	```python
     MYSQL_DATABASE: pictures_db
     MYSQL_USER: pictures_u
     MYSQL_PASSWORD: pictures_p
     MYSQL_ROOT_PASSWORD: root0808
-```
+	```
 
 | Tables       | Rows |
 |--------------|:----:|
@@ -80,12 +81,12 @@
 
 ## Pictures table
 
-```bash
+	```python
     mysql> mysql -u pictures_u -p
     mysql> Enter password: `pictures_p`
     mysql> use pictures_db;
     mysql> SELECT * FROM pictures_db.picture;
-```
+	```
 
 | id  | animal_type | data       | name       | path       | type       |
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
@@ -160,6 +161,6 @@
     helm install --name animal-picture-worker ./animal-picture-worker
 ```
 
-8. **Accessing the Solution**
+8. **The Solution**
 
 	Go to http://camunda.poc/animal-picture-front

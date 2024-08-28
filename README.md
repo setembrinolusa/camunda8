@@ -138,13 +138,14 @@
 	helm install --name camunda-platform camunda/camunda-platform \ 
 	-f values-combined-ingress.yaml
 ```
-Once deployed, you can access the Camunda 8 components on:
 
-Applications: https://camunda.poc/[identity|operate|tasklist|zeebe]
+	Once deployed, you can access the Camunda 8 components on:
 
-Keycloak authentication: https://camunda.poc/auth
+	Applications: https://camunda.poc/[identity|operate|tasklist|zeebe]
 
-Zeebe Gateway: grpc://zeebe.camunda.poc
+	Keycloak authentication: https://camunda.poc/auth
+
+	Zeebe Gateway: grpc://zeebe.camunda.poc
 
 
 7. **Install the Solution**

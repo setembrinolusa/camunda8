@@ -109,6 +109,7 @@
 	```
 	```python
 	kind create cluster --name camunda-platform-poc --config kind.config
+	
 	kubectl apply -f \
 	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 	```
@@ -121,7 +122,9 @@
 
 	```python
 	kubectl config use-context kind-camunda-platform-poc
+	
 	helm repo add camunda https://helm.camunda.io
+	
 	helm repo update
 
 	helm install --name camunda-platform camunda/camunda-platform \ 
@@ -139,12 +142,15 @@
 
 	```python
     cd ./camunda8/animal-picture-app
+    
     helm install --name animal-picture-app ./animal-picture-app
 
     cd ./camunda8/animal-picture-front
+    
     helm install --name animal-picture-front ./animal-picture-front
 
     cd ./camunda8/animal-picture-worker
+    
     helm install --name animal-picture-worker ./animal-picture-worker
 	```
 

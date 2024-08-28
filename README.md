@@ -114,6 +114,8 @@
 ```bash
 	kind create cluster --name camunda-platform-poc --config kind.config
 	
+	kubectl config use-context kind-camunda-platform-poc
+	
 	kubectl apply -f \
 	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```

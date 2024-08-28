@@ -94,11 +94,12 @@
 
 5. **Running a Local Cluster
 
-https://docs.camunda.io/docs/self-managed/setup/deploy/local/local-kubernetes-cluster/
+	https://docs.camunda.io/docs/self-managed/setup/deploy/local/local-kubernetes-cluster/
 
-Add local host mapping so you can resolve the domain name that will be used to access the Camunda 8 cluster
- camunda.local to the local IP address 127.0.0.1. If you are using Mac or Linux, modify the sudo vi /etc/hosts file. 
- For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
+	Add local host mapping so you can resolve the domain name 
+	that will be used to access the Camunda 8 cluster camunda.poc to the local IP address 127.0.0.1.
+ 	If you are using Mac or Linux, modify the sudo vi /etc/hosts file. 
+ 	For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
  
 	```python
 	127.0.0.1 camunda.poc

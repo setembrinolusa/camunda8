@@ -90,3 +90,53 @@
 |-----|:-----------:|:----------:|:----------:|:----------:|:----------:|
 |     |             |            |            |            |            |
 
+## 
+
+5. **Running a Local Cluster
+
+https://docs.camunda.io/docs/self-managed/setup/deploy/local/local-kubernetes-cluster/
+
+Add local host mapping so you can resolve the domain name that will be used to access the Camunda 8 cluster
+ camunda.local to the local IP address 127.0.0.1. If you are using Mac or Linux, modify the /etc/hosts file. 
+ For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
+ 
+	```python
+	127.0.0.1 camunda.poc
+	127.0.0.1 zeebe.camunda.poc
+	```
+	```python
+	kind create cluster --name camunda-platform-poc --config kind.config
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+	```
+	
+	ingress-ngnix controller resources (pods, services, etc.) will be deployed into the ingress-nginx namespace. 
+	It may take a few minutes to download container images and configure deployments. 
+	Make sure all pods are running with the kubectl get pods --namespace ingress-nginx command before continuing.
+
+	```python
+	kubectl config use-context kind-camunda-platform-poc
+	helm repo add camunda https://helm.camunda.io
+	helm repo update
+
+	helm install --name camunda-platform camunda/camunda-platform -f values-combined-ingress.yaml
+	```
+
+6. **Install MySQL**
+	```python
+	helm install --name mysql --set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db stable/mysql
+	```
+
+6. **Install the Solution**
+
+	```python
+    cd ./camunda8/animal-picture-app
+    helm install --name animal-picture-app ./animal-picture-app
+
+    cd ./camunda8/animal-picture-front
+    helm install --name animal-picture-front ./animal-picture-front
+
+    cd ./camunda8/animal-picture-worker
+    helm install --name animal-picture-worker ./animal-picture-worker
+	```
+
+6. **Install the Solution**

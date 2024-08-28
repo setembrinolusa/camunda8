@@ -1,0 +1,17 @@
+global:
+  ingress:
+    enabled: true
+    className: nginx
+    host: "camunda.poc"
+
+operate:
+  contextPath: "/operate"
+
+tasklist:
+  contextPath: "/tasklist"
+
+zeebeGateway:
+  ingress:
+    enabled: true
+    className: nginx
+    host: "zeebe.camunda.poc"

@@ -158,14 +158,20 @@
 	--set mysqlRootPassword=root0808,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
 
+	`Install animal-picture-app`
+	
     cd animal-picture-app
     
     helm install --name animal-picture-app ./animal-picture-app
 
+	`Install animal-picture-front`
+	
     cd animal-picture-front
     
     helm install --name animal-picture-front ./animal-picture-front
 
+	`Install animal-picture-worker`
+	
     cd animal-picture-worker
     
     helm install --name animal-picture-worker ./animal-picture-worker

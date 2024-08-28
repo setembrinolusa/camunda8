@@ -39,7 +39,7 @@
     You can run the solution by typing the following command
 
 	```python
-    docker-compose up
+    docker compose up -d
 	```
 
     The servers will start on ports 8080, 8081 and 8082.
@@ -97,7 +97,7 @@
 https://docs.camunda.io/docs/self-managed/setup/deploy/local/local-kubernetes-cluster/
 
 Add local host mapping so you can resolve the domain name that will be used to access the Camunda 8 cluster
- camunda.local to the local IP address 127.0.0.1. If you are using Mac or Linux, modify the /etc/hosts file. 
+ camunda.local to the local IP address 127.0.0.1. If you are using Mac or Linux, modify the sudo vi /etc/hosts file. 
  For Windows, modify c:\Windows\System32\Drivers\etc\hosts. Add the following two lines:
  
 	```python

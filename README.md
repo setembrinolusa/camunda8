@@ -111,19 +111,20 @@
 
 ## Create the Cluster
 
-```bash
+	```bash
 	kind create cluster --name camunda-platform-poc --config kind.config
 	
 	kubectl apply -f \
 	https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
-```
+	```
 	
-	The ingress-ngnix controller resources (pods, services, etc.) will be deployed into the ingress-nginx namespace. 
+	The ingress-ngnix controller resources (pods, services, etc.) will be deployed 
+	into the ingress-nginx namespace. 
 	
 	It may take a few minutes to download container images and configure deployments. 
 	Make sure all pods are running with the command before continuing
 	
-```bash
+	```bash
 	kubectl get pods --namespace ingress-nginx
 
 	kubectl config use-context kind-camunda-platform-poc
@@ -134,7 +135,7 @@
 
 	helm install --name camunda-platform camunda/camunda-platform \ 
 	-f values-combined-ingress.yaml
-```
+	```
 
 6. **Install MySQL**
 	

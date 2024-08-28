@@ -126,14 +126,14 @@
 	-f values-combined-ingress.yaml
 	```
 
-6. **Install MySQL**
+6.**Install MySQL**
 	```python
 	helm install --name mysql \ 
 	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 
 	stable/mysql
 	```
 
-6. **Install the Solution**
+7.**Install the Solution**
 
 	```python
     cd ./camunda8/animal-picture-app
@@ -146,6 +146,6 @@
     helm install --name animal-picture-worker ./animal-picture-worker
 	```
 
-7. **Accessing the Solution**
+8. **Accessing the Solution**
 
 	Go to http://camunda.poc/animal-picture-front

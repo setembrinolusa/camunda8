@@ -132,6 +132,7 @@
 	```
 
 6.**Install MySQL**
+	
 	```python
 	helm install --name mysql \ 
 	--set mysqlRootPassword=root8080,mysqlUser=pictures_u,mysqlPassword=pictures_p,mysqlDatabase=pictures_db \ 

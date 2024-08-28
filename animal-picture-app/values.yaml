@@ -43,6 +43,9 @@ service:
   type: NodePort
   port: 80
 
+container:
+  port: 8082
+
 ingress:
   enabled: true
   className: nginx

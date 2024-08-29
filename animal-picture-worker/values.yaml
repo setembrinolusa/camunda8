@@ -8,7 +8,7 @@ image:
   repository: "animal-picture-worker"
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -55,7 +55,7 @@ ingress:
   hosts:
     - host: "camunda.poc"
       paths:
-        - path: "/animal-picture-worker"
+        - path: /animal-picture-worker
           pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls

@@ -162,19 +162,19 @@
 	
     cd animal-picture-app
     
-    helm install --name animal-picture-app ././camunda8-helm -f values.yaml
+    helm install --name animal-picture-app ./animal-picture-app
 
 `Install animal-picture-front`
 	
     cd animal-picture-front
     
-    helm install --name animal-picture-front ././camunda8-helm -f values.yaml
+    helm install --name animal-picture-front ./animal-picture-front
 
 `Install animal-picture-worker`
 	
     cd animal-picture-worker
     
-    helm install --name animal-picture-worker ././camunda8-helm -f values.yaml
+    helm install --name animal-picture-worker ./animal-picture-worker
 ```
 
 7. **The Solution**

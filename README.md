@@ -50,6 +50,11 @@
     Go to the <http://localhost:8080/>
 
 
+    Frontend ANGULAR to see the List of Pictures from MySQL database
+    
+    Go to the <http://localhost:4200/>
+
+
     Worker from-to Camunda 8
 
     Go to the <http://localhost:8081/>
@@ -57,7 +62,7 @@
 
     Application to persist and search pictures from-to MySQL database
 
-    Go to the <http://localhost:8081/>
+    Go to the <http://localhost:8082/>
 
 
 4. **Steps to Access the app documentation**
@@ -175,8 +180,16 @@
     cd animal-picture-worker
     
     helm install --name animal-picture-worker ./animal-picture-worker
+
+`Install animal-picture-angular`
+	
+    cd animal-picture-angular
+    
+    helm install --name animal-picture-angular ./animal-picture-angular
+
 ```
 
 7. **The Solution**
 
-	Go to http://camunda.poc/animal-picture-front
+	Go to http://camunda.poc/animal-picture-front to Start the Process
+	Go to http://camunda.poc/animal-picture-angular to Access the List of Pictures

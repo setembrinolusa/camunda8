@@ -2,7 +2,21 @@
 version: '3.7'
 # Define services
 services:
-
+  # Database Service (Mysql)
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: pictures_db
+      MYSQL_USER: pictures_u
+      MYSQL_PASSWORD: pictures_p
+      MYSQL_ROOT_PASSWORD: root0808
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - pictures
   # Front service
   front-server:
     # Configuration for building the docker image for the front service
@@ -14,6 +28,20 @@ services:
     restart: always
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - pictures
+
+
+  # Worker service
+  worker-server:
+    # Configuration for building the docker image for the worker service
+    build:
+      context: animal-picture-worker # Use an image built from the specified dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081" # Forward the exposed port 8081 on the container to port 8081 on the host machine
+    restart: always
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - pictures
+
 
   # App service
   app-server:
@@ -29,6 +57,17 @@ services:
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - pictures
 
+  # Front Angular service
+  angular-server:
+    # Configuration for building the docker image for the front service
+    build:
+      context: animal-picture-angular # Use an image built from the specified dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - pictures
 # Volumes
 volumes:
   db-data:

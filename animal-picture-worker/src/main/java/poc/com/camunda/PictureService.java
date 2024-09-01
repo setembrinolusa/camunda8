@@ -26,21 +26,13 @@ public class PictureService {
 
     public String sendPictureDetails(String animalType) throws Exception {
 
-        Picture picture = new Picture("", animalType, "", "", findPath(animalType), null, "", 0L);
+        Picture picture = new Picture("", animalType, "", "", findPath(animalType), "", 0L);
 
         PictureResponse responseEntity = webClient.post().uri("/pictures/find-and-save")
                 .contentType(MediaType.APPLICATION_JSON).bodyValue(picture).retrieve().bodyToMono(PictureResponse.class)
                 .block();
 
-        List<Picture> pictures = getAllPicturess();
-
-        StringBuilder picturesLinks = new StringBuilder().append("Actual Animal List").append("\n\n\n");
-
-        for (Picture pic : pictures) {
-            picturesLinks.append("AnimalType: ").append(pic.getAnimalType()).append("\n").append("Link: ")
-                    .append(pic.getUrl()).append("\n\n");
-        }
-        final String confirmation = picturesLinks.toString(); //String.valueOf(System.currentTimeMillis());
+        final String confirmation = String.valueOf(System.currentTimeMillis());
         return confirmation;
     }
 
@@ -55,7 +47,10 @@ public class PictureService {
             path = "https://api.thecatapi.com/v1/images/search";
             ObjectMapper mapper = new ObjectMapper();
             JsonNode rootNode;
-            rootNode = mapper.readTree(WebClient.builder().baseUrl(path).build().get().retrieve().toString());
+            rootNode = mapper.readTree(WebClient.builder().baseUrl(path).build().get().exchange()
+                    .block()
+                    .bodyToMono(String.class)
+                    .block());
             path = rootNode.findValue("url").asText();
         }
         return path;

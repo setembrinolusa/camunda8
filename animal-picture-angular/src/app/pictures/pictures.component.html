@@ -1,0 +1,14 @@
+<br/>
+<br/>
+<br/>
+<a href="#" onclick="window.location.reload(true);">REFRESH LIST</a>
+<br/>
+<br/>
+<br/>
+<div class="row">
+@for (picture of data; track picture.id){
+  <div class="column"> {{ picture.name }}</div>
+  <div class="column"><a href="{{ picture.url }}" target="_blank"> {{ picture.url }} </a></div>
+
+}
+</div>

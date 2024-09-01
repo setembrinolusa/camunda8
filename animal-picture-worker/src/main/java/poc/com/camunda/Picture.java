@@ -23,8 +23,6 @@ public class Picture {
 
     private String path;
 
-    private byte[] data;
-    
     private String url;
 
     private long size;

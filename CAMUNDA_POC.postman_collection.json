@@ -36,7 +36,7 @@
 					"formdata": [
 						{
 							"key": "animalType",
-							"value": "cat",
+							"value": "dog",
 							"type": "text"
 						},
 						{
@@ -46,8 +46,8 @@
 						},
 						{
 							"key": "file",
-							"value": "200.jpeg",
-							"type": "text"
+							"type": "file",
+							"src": "/Users/slusa/Downloads/WhatsApp Image 2022-10-28 at 12.59.23.jpeg"
 						}
 					]
 				},
@@ -83,6 +83,34 @@
 						"api",
 						"pictures",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "startProcess",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"animalType\":\"bear\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"start"
 					]
 				}
 			},

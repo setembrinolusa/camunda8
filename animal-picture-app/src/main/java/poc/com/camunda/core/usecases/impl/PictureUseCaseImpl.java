@@ -40,8 +40,7 @@ public class PictureUseCaseImpl implements PictureUseCase {
             try {
                 return ImageUtils.decompressImage(image.getData());
             } catch (DataFormatException | IOException exception) {
-                throw new ContextedRuntimeException("Error downloading an image", 
-                        exception).addContextValue("Image ID",
+                throw new ContextedRuntimeException("Error downloading an image", exception).addContextValue("Image ID",
                         image.getId());
             }
         }).orElse(null);
@@ -51,17 +50,17 @@ public class PictureUseCaseImpl implements PictureUseCase {
         return repo.findAll().stream();
     }
 
-    public PictureEntity saveImage(String animalType, String path, MultipartFile file) {
+    public PictureEntity saveImage(MultipartFile file) {
         logger.info("Creating a Picture");
 
         PictureEntity picture = null;
 
         try {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            picture = new PictureEntity(null, animalType, fileName, file.getContentType(), path,
+            picture = new PictureEntity(null, fileName, file.getContentType(),
                     ImageUtils.compressImage(file.getBytes()));
             System.out.println("------------------");
-            System.out.println("saving picture to the database animalType=" + animalType);
+            System.out.println("saving picture to the database");
             System.out.println("------------------");
             picture = mapper.repoToModel(repo.save(mapper.modelToRepo(picture)));
         } catch (IOException e) {

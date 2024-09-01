@@ -45,7 +45,7 @@ public class Application {
                 path = "https://api.thecatapi.com/v1/images/search";
             }
 
-            final String confirmation = pictureService.uploadAndSavePicture(animalType, path);
+            final String confirmation = pictureService.sendPictureDetails(animalType, path);
 
             final Map<String, Object> outputVariables = new HashMap<String, Object>();
             outputVariables.put("confirmation", confirmation);

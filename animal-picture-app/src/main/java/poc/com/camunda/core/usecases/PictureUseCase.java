@@ -15,6 +15,6 @@ public interface PictureUseCase {
 
     public Stream<Picture> getAllFiles();
 
-    public PictureEntity saveImage(String animalType, String path, MultipartFile file);
+    public PictureEntity saveImage(MultipartFile file);
 
 }

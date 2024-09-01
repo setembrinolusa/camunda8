@@ -31,13 +31,9 @@ public class Picture implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    private String animalType;
-
     private String name;
 
     private String type;
-
-    private String path;
 
     @Lob
     @Type(type = "org.hibernate.type.ImageType")

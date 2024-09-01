@@ -2,7 +2,6 @@ package poc.com.camunda;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -20,7 +19,7 @@ public class PictureService {
     @Autowired
     private final PicturesWebClient webClient;
 
-    public String uploadAndSavePicture(String animalType, String path) throws Exception {
+    public String sendPictureDetails(String animalType, String path) throws Exception {
 
         System.out.println("Animal Type: " + animalType);
         System.out.println("Path: " + path);
@@ -44,12 +43,11 @@ public class PictureService {
             }
         }
 
-        MultipartFile multipartFile = webClient.getPicture(animalType, path);
-
         System.out.println("------------------");
         System.out.println("chamando app animalType=" + animalType);
         System.out.println("------------------");
-        webClient.uploadAndSavePicture(animalType, path, multipartFile.getBytes());
+
+        webClient.sendPictureDetails(animalType, path);
 
         final String confirmation = String.valueOf(System.currentTimeMillis());
         System.out.println("Successful Transaction: " + confirmation);

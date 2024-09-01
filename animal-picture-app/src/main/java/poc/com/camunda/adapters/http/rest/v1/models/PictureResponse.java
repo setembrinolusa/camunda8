@@ -22,9 +22,6 @@ public class PictureResponse implements Serializable {
     @JsonProperty("id")
     private String id;
     
-    @JsonProperty("animalType")
-    private String animalType;
-
     @JsonProperty("name")
     private String name;
     

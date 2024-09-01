@@ -19,13 +19,9 @@ public class PictureEntity implements Serializable {
 
     private String id;
 
-    private String animalType;
-
     private String name;
 
     private String type;
-
-    private String path;
 
     private byte[] data;
 

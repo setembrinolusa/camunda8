@@ -70,7 +70,7 @@
 
 4. **Steps to Access the app documentation**
 
-    Go to the <http://localhost:8082/swagger-ui/>
+    Go to the <http://localhost:8082/swagger-ui/#/picture-controller/>
 
 ![swagger](swagger.png)
 

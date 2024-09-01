@@ -17,7 +17,7 @@ public class PictureEntity implements Serializable {
 
     private static final long serialVersionUID = 5584345989376682627L;
 
-    private Long id;
+    private String id;
 
     private String animalType;
 
@@ -27,6 +27,6 @@ public class PictureEntity implements Serializable {
 
     private String path;
 
-    private byte[] image;
+    private byte[] data;
 
 }

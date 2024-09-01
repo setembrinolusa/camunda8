@@ -19,6 +19,9 @@ public class PictureResponse implements Serializable {
 
     private static final long serialVersionUID = 4331181472716298764L;
 
+    @JsonProperty("id")
+    private String id;
+    
     @JsonProperty("animalType")
     private String animalType;
 
@@ -30,9 +33,6 @@ public class PictureResponse implements Serializable {
 
     @JsonProperty("type")
     private String type;
-
-    @JsonProperty("path")
-    private String path;
 
     @JsonProperty("size")
     private long size;

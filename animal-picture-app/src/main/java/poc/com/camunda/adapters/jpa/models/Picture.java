@@ -1,5 +1,7 @@
 package poc.com.camunda.adapters.jpa.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Picture {
+public class Picture implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -37,5 +40,9 @@ public class Picture {
     private String path;
 
     @Lob
+    @Type(type = "org.hibernate.type.ImageType")
     private byte[] data;
+
+    private static final long serialVersionUID = 5584345989376682627L;
+
 }

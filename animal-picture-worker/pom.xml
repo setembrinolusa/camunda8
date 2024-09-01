@@ -19,6 +19,8 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <spring-boot.version>3.0.1</spring-boot.version>
+        <spring-zeebe.version>8.3.5</spring-zeebe.version>
     </properties>
 
     <dependencies>
@@ -45,6 +47,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -58,8 +64,17 @@
         </dependency>
         <dependency>
             <groupId>io.camunda</groupId>
-            <artifactId>zeebe-client-java</artifactId>
-            <version>8.3.5</version>
+            <artifactId>spring-zeebe-starter</artifactId>
+            <version>${spring-zeebe.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -81,6 +96,14 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <mainClass>poc.com.camunda.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>

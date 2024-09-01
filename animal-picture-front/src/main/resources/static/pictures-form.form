@@ -38,7 +38,7 @@
         "columns": null
       },
       "id": "Field_03sz0jq",
-      "key": "radio_animals"
+      "key": "animalType"
     },
     {
       "action": "submit",

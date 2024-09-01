@@ -3,7 +3,9 @@ package poc.com.camunda.core.usecases.impl;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
+import java.util.zip.DataFormatException;
 
+import org.apache.commons.lang3.exception.ContextedRuntimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import poc.com.camunda.core.domain.entities.PictureEntity;
 import poc.com.camunda.core.exceptions.ResourceNotFoundException;
 import poc.com.camunda.core.usecases.PictureUseCase;
 import poc.com.camunda.core.usecases.mappers.PictureUcMapper;
+import poc.com.camunda.core.usecases.utils.ImageUtils;
 
 @Service
 public class PictureUseCaseImpl implements PictureUseCase {
@@ -29,10 +32,19 @@ public class PictureUseCaseImpl implements PictureUseCase {
 
     private static final Logger logger = LoggerFactory.getLogger(PictureUseCaseImpl.class);
 
-    public Picture getFile(String id) {
+    public byte[] getFile(String id) {
         Optional<Picture> picture = Optional
                 .of(repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Picture", "id", id)));
-        return picture.get();
+
+        return picture.map(image -> {
+            try {
+                return ImageUtils.decompressImage(image.getData());
+            } catch (DataFormatException | IOException exception) {
+                throw new ContextedRuntimeException("Error downloading an image", 
+                        exception).addContextValue("Image ID",
+                        image.getId());
+            }
+        }).orElse(null);
     }
 
     public Stream<Picture> getAllFiles() {
@@ -46,7 +58,11 @@ public class PictureUseCaseImpl implements PictureUseCase {
 
         try {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            picture = new PictureEntity(null, animalType, fileName, file.getContentType(), path, file.getBytes());
+            picture = new PictureEntity(null, animalType, fileName, file.getContentType(), path,
+                    ImageUtils.compressImage(file.getBytes()));
+            System.out.println("------------------");
+            System.out.println("saving picture to the database animalType=" + animalType);
+            System.out.println("------------------");
             picture = mapper.repoToModel(repo.save(mapper.modelToRepo(picture)));
         } catch (IOException e) {
             // TODO Auto-generated catch block

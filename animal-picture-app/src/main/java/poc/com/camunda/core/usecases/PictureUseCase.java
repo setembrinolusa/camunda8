@@ -11,7 +11,7 @@ import poc.com.camunda.core.domain.entities.PictureEntity;
 @Service
 public interface PictureUseCase {
 
-    public Picture getFile(String id);
+    public byte[] getFile(String id);
 
     public Stream<Picture> getAllFiles();
 

@@ -196,4 +196,5 @@
 7. **The Solution**
 
 	Go to http://camunda.poc/animal-picture-front to Start the Process
+	
 	Go to http://camunda.poc/animal-picture-angular to Access the List of Pictures

@@ -9,6 +9,10 @@
 
       [<img src="clean.png" width="700"/>](clean.png)
 
+3. **Camunda 8 Cluster - Operate**
+
+      [<img src="operate.png" width="700"/>](operate.png)
+
 ## Steps to Run the Spring Boot ( Must have Docker installed )
 
 1. **Clone the solution**

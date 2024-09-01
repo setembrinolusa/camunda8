@@ -29,31 +29,16 @@ public class Application {
     @JobWorker(type = "savePicture", autoComplete = false)
     public void savePicture(final ActivatedJob job) {
         try {
-            System.out.println("------------------");
-            System.out.println("passou aqui");
-            System.out.println("------------------");
 
             final Map<String, Object> inputVariables = job.getVariablesAsMap();
             final String animalType = (String) inputVariables.get("animalType");
 
-            String path = "";
-            if (animalType.equalsIgnoreCase("dog")) {
-                path = "https://place.dog/300/200";
-            } else if (animalType.equalsIgnoreCase("bear")) {
-                path = "https://placebear.com/200/300";
-            } else {
-                path = "https://api.thecatapi.com/v1/images/search";
-            }
-
-            final String confirmation = pictureService.sendPictureDetails(animalType, path);
+            final String confirmation = pictureService.sendPictureDetails(animalType);
 
             final Map<String, Object> outputVariables = new HashMap<String, Object>();
             outputVariables.put("confirmation", confirmation);
 
             zeebe.newCompleteCommand(job.getKey()).variables(outputVariables).send().join();
-            System.out.println("------------------");
-            System.out.println("aqui também");
-            System.out.println("------------------");
             // Thread.sleep(10000);
         } catch (Exception e) {
             // TODO Auto-generated catch block

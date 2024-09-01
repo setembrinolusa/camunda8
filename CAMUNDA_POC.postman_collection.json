@@ -32,27 +32,16 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "animalType",
-							"value": "dog",
-							"type": "text"
-						},
-						{
-							"key": "path",
-							"value": "https://place.dog/300/200",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/Users/slusa/Downloads/WhatsApp Image 2022-10-28 at 12.59.23.jpeg"
+					"mode": "raw",
+					"raw": "{\n    \"animalType\":\"dog\",\n\n    \"path\":\"https://place.dog/300/200\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://localhost:8082/api/pictures/upload",
+					"raw": "http://localhost:8082/api/pictures/find-and-save",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -61,7 +50,7 @@
 					"path": [
 						"api",
 						"pictures",
-						"upload"
+						"find-and-save"
 					]
 				}
 			},

@@ -1,56 +1,64 @@
 package poc.com.camunda;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
-import poc.com.camunda.config.PicturesWebClient;
 
 @Service
 @RequiredArgsConstructor
 public class PictureService {
 
     @Autowired
-    private final PicturesWebClient webClient;
+    private final WebClient webClient;
 
-    public String sendPictureDetails(String animalType, String path) throws Exception {
+    public List<Picture> getAllPicturess() {
+        return webClient.get().uri("/pictures").retrieve().bodyToMono(PictureResponse.class)
+                .map(PictureResponse::getPictures).block();
+    }
 
-        System.out.println("Animal Type: " + animalType);
-        System.out.println("Path: " + path);
+    public String sendPictureDetails(String animalType) throws Exception {
 
-        if (animalType.equalsIgnoreCase("cat")) {
+        Picture picture = new Picture("", animalType, "", "", findPath(animalType), null, "", 0L);
 
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode rootNode;
+        PictureResponse responseEntity = webClient.post().uri("/pictures/find-and-save")
+                .contentType(MediaType.APPLICATION_JSON).bodyValue(picture).retrieve().bodyToMono(PictureResponse.class)
+                .block();
 
-            try {
-                rootNode = mapper.readTree(WebClient.builder().baseUrl(path).build().get().retrieve().toString());
+        List<Picture> pictures = getAllPicturess();
 
-                path = rootNode.findValue("url").asText();
+        StringBuilder picturesLinks = new StringBuilder().append("Actual Animal List").append("\n\n\n");
 
-            } catch (JsonMappingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (JsonProcessingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        for (Picture pic : pictures) {
+            picturesLinks.append("AnimalType: ").append(pic.getAnimalType()).append("\n").append("Link: ")
+                    .append(pic.getUrl()).append("\n\n");
         }
-
-        System.out.println("------------------");
-        System.out.println("chamando app animalType=" + animalType);
-        System.out.println("------------------");
-
-        webClient.sendPictureDetails(animalType, path);
-
-        final String confirmation = String.valueOf(System.currentTimeMillis());
-        System.out.println("Successful Transaction: " + confirmation);
+        final String confirmation = picturesLinks.toString(); //String.valueOf(System.currentTimeMillis());
         return confirmation;
     }
+
+    public String findPath(String animalType) throws Exception {
+
+        String path = "";
+        if (animalType.equalsIgnoreCase("dog")) {
+            path = "https://place.dog/300/200";
+        } else if (animalType.equalsIgnoreCase("bear")) {
+            path = "https://placebear.com/200/300";
+        } else if (animalType.equalsIgnoreCase("cat")) {
+            path = "https://api.thecatapi.com/v1/images/search";
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode rootNode;
+            rootNode = mapper.readTree(WebClient.builder().baseUrl(path).build().get().retrieve().toString());
+            path = rootNode.findValue("url").asText();
+        }
+        return path;
+    }
+
 }

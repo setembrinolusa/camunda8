@@ -32,11 +32,10 @@
 	```
 
 	```python
-	zeebe.client.address= zeebe.camunda.poc
-	zeebe.client.id=
-	zeebe.client.secret=
-	zeebe.client.authorization.server.url=
-	zeebe.client.token.audiente=
+	zeebe.client.cloud.region=dsm-1
+	zeebe.client.cloud.clusterId=15735920-550f-4a20-8056-d3b9fac4cd69
+	zeebe.client.cloud.clientId=M2vvF-vMF_FF5_RSUqU9CrIh5k9B_ZBO
+	zeebe.client.cloud.clientSecret=twXgnNx~PjVotOmY7NmgZvbFEP.flPR.S~o-hhJU3kdfA7otURtZuHU_qUI1QiOA
 	```
 
 3. **Running the solution**

@@ -1,23 +1,31 @@
-# ----------------------------
-# build from source
-# ----------------------------
-  FROM node:18 AS build
+# syntax=docker/dockerfile:1.4
 
-  WORKDIR /app
+FROM --platform=$BUILDPLATFORM node:17.0.1-bullseye-slim as builder
 
-  COPY package*.json .
-  RUN npm install
+RUN mkdir /project
+WORKDIR /project
 
-  COPY . .
-  RUN npm run build
+RUN npm install -g @angular/cli@13
 
-  # ----------------------------
-  # run with nginx
-  # ----------------------------
-  FROM nginx
+COPY package.json package-lock.json ./
+RUN npm ci
 
-  RUN rm /etc/nginx/conf.d/default.conf
-  COPY nginx.conf /etc/nginx/conf.d
-  COPY --from=build /app/dist/animal-picture-angular /usr/share/nginx/html
+COPY . .
+CMD ["ng", "serve", "--host", "0.0.0.0"]
 
-  EXPOSE 4200
+FROM builder as dev-envs
+
+RUN <<EOF
+apt-get update
+apt-get install -y --no-install-recommends git
+EOF
+
+RUN <<EOF
+useradd -s /bin/bash -m vscode
+groupadd docker
+usermod -aG docker vscode
+EOF
+# install Docker tools (cli, buildx, compose)
+COPY --from=gloursdocker/docker / /
+
+CMD ["ng", "serve", "--host", "0.0.0.0"]

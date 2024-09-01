@@ -3,11 +3,11 @@
 
 1. **Solution Architecture**
 
-[<img src="arquitecture.png" width="650"/>](arquitecture.png)
+	[<img src="arquitecture.png" width="650"/>](arquitecture.png)
 
 2. **Java Spring Architecture**
 
-[<img src="clean.png" width="650"/>](clean.png)
+	[<img src="clean.png" width="650"/>](clean.png)
 
 ## Steps to Run the Spring Boot ( Must have Docker installed )
 

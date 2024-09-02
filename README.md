@@ -158,6 +158,42 @@
 
 6. **Install the Solution**
 
+
+    Change the values as per your Camunda 8 Cluster inside the application.properties files
+    
+	```bash
+    .../camunda8/tree/develop/animal-picture-front/src/main/resources
+    .../camunda8/tree/develop/animal-picture-worker/src/main/resources
+	```
+
+	```python
+	zeebe.client.cloud.region=dsm-1
+	zeebe.client.cloud.clusterId=15735920-550f-4a20-8056-d3b9fac4cd69
+	zeebe.client.cloud.clientId=M2vvF-vMF_FF5_RSUqU9CrIh5k9B_ZBO
+	zeebe.client.cloud.clientSecret=twXgnNx~PjVotOmY7NmgZvbFEP.flPR.S~o-hhJU3kdfA7otURtZuHU_qUI1QiOA
+	```
+
+
+	Change the values as per your Camunda 8 Cluster inside the application.properties files
+
+	```bash
+    .../camunda8/tree/develop/animal-picture-worker/src/main/resources
+	```
+
+	```bash
+	spring.backend.host=https://camunda.poc/animal-picture-app/api
+	```
+	
+	Change the values as per your Camunda 8 Cluster inside the pictures.component.ts files
+	
+	```bash
+	.../camunda8/animal-picture-angular/src/app/pictures
+	```
+
+	```bash
+	this.httpClient.get('https://camunda.poc/animal-picture-app/api/pictures')
+	```
+
 ```bash
 
 `Install Mysql`

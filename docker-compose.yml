@@ -64,10 +64,12 @@ services:
     ports:
       - 4200:4200    
     # workaround to Docker issue https://github.com/moby/moby/issues/38564
-    volumes:
-      - ./angular:/project
-      - /project/node_modules
+    #volumes:
+    #  - ./angular:/project
+    #  - /project/node_modules
     restart: always
+    depends_on: 
+      - app-server # This service depends on mysql. Start that first.
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - pictures
 # Volumes

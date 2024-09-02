@@ -43,7 +43,13 @@
     You can run the solution by typing the following command
 
 	```bash
-    docker compose up -d
+    docker compose up -d --build
+	```
+
+	Run with option --build when changing something in Dockerfile's for any application
+	
+	```bash
+    docker compose up -d --build
 	```
 
     The servers will start on ports 8080, 8081 and 8082.
